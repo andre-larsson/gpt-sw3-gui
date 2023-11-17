@@ -37,7 +37,10 @@ def infer(model_name, num_samples, temperature, top_p, max_tokens, prompt):
 
     for i in range(num_samples):
         if num_samples > 1:
+            if i > 0:
+                return_string += "\n\n"
             return_string += f"---- Sample {i+1} ----\n\n"
+
         generated_token_ids = model.generate(
             inputs=input_ids,
             max_new_tokens=max_tokens,
